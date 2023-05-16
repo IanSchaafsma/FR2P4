@@ -24,6 +24,26 @@ body {
   width: 40rem;
   aspect-ratio: 1/1;
   background: #eee;
+  border-radius: 2rem;
+}
+.agenda__header {
+  background: #F15A59;
+  height: 20%;
+  border-top: ridge;
+}
+.agenda__month {
+  height: 80%;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  list-style: none;
+}
+.agenda__day {
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */

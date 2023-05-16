@@ -1,5 +1,28 @@
+@use "../../abstracts/mixins";
 .agenda{
     width: 40rem;
     aspect-ratio: 1/1;
     background: #eee;
+    border-radius: 2rem;
+
+    &__header{
+        background: #F15A59;
+        height: 20%;
+        border-top: ridge;
+        
+    }
+
+    &__month{
+        height: 80%;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1rem;
+        list-style: none;
+    }
+
+    &__day{
+        background: blue;
+        @include mixins.flexCenter;
+    }
 }

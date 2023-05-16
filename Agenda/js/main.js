@@ -58,6 +58,7 @@ class Header{
     constructor(agenda, nameOfMonth){
         this.agenda = agenda;
         this.htmlElement = document.createElement("header");
+        this.htmlElement.classList.add("agenda__header");
         this.agenda.render(".agenda", this.htmlElement);
         this.nameOfMonth = nameOfMonth;
     }
@@ -72,21 +73,31 @@ class Month{
     constructor(agenda, numberOfDays){
         this.agenda = agenda;
         this.htmlElement = document.createElement("ul");
+        this.htmlElement.classList.add("agenda__month");
         this.agenda.render(".agenda", this.htmlElement);
         this.numberOfDays = numberOfDays;
-        for(let i = 0; i < numberOfDays; i++){
-            this.day.push(new Day(this));
+        for(let i = 1; i <= numberOfDays; i++){
+            this.day.push(new Day(this, i));
         }
+    }
+
+    renderDays(placeToRender, WhatToRender){
+        this.agenda.render(placeToRender, WhatToRender);
     }
 }
 
 class Day{
     month;
     htmlElement;
+    dayNumber;
     
-    constructor(month){
+    constructor(month, dayNumber){
+        this.dayNumber = dayNumber;
         this.htmlElement = document.createElement("li");
+        this.htmlElement.classList.add("agenda__day");
+        this.htmlElement.innerText = this.dayNumber;
         this.month = month;
+        this.month.renderDays(".agenda__month", this.htmlElement);
     }
     
 }

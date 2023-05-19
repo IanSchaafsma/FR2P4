@@ -9,41 +9,70 @@ html {
 }
 
 body {
-  font-size: 2rem;
-}
-
-body {
   background: linear-gradient(to bottom right, #5C469C, #4C4C6D);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4rem;
+  font-size: 2rem;
+  font-family: sans-serif;
 }
 
 .agenda {
-  width: 40rem;
+  width: 50rem;
   aspect-ratio: 1/1;
   background: #eee;
-  border-radius: 2rem;
+  border-radius: 2.2rem;
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
 }
 .agenda__header {
   background: #F15A59;
   height: 20%;
-  border-top: ridge;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+.agenda__button {
+  background: none;
+  border: none;
+  font-size: 200%;
+}
+.agenda__button:hover {
+  cursor: pointer;
 }
 .agenda__month {
   height: 80%;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
   list-style: none;
 }
 .agenda__day {
-  background: blue;
+  background: #d5d5d5;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 85%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+.agenda__day:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 62.5rem) {
+  .agenda {
+    position: static;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

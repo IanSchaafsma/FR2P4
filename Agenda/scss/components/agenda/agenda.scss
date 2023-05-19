@@ -1,28 +1,62 @@
 @use "../../abstracts/mixins";
 .agenda{
-    width: 40rem;
+    width: 50rem;
     aspect-ratio: 1/1;
     background: #eee;
-    border-radius: 2rem;
+    border-radius: 2.2rem;
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
 
     &__header{
         background: #F15A59;
         height: 20%;
-        border-top: ridge;
-        
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        @include mixins.flexCenter;
+        justify-content: space-between;
+        padding: 2rem;
     }
+
+    &__button{
+        background: none;
+        border: none;
+        font-size: 200%;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        &--left{
+
+        }
+
+        &--right{
+
+        }
+    }
+
+
 
     &__month{
         height: 80%;
         padding: 2rem;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(5, 1fr);
         gap: 1rem;
         list-style: none;
     }
 
     &__day{
-        background: blue;
+        background: darken(#eee, 10%);
         @include mixins.flexCenter;
+        width: 85%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }

@@ -1,4 +1,4 @@
-class API{
+class API{ // hier haal je het json bestandje op
     async getData(url){
         let dataToBeReturned = {};
        await fetch(url).then(

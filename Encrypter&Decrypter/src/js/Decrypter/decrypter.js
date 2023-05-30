@@ -1,4 +1,4 @@
-class Decrypter{    
+class Decrypter{  // hier doe je exact het tegenovergestelde de encrypter (zie encrypter.js)
     decrypt(stringToDecrypt){
         stringToDecrypt = stringToDecrypt.toUpperCase();
         let decryptedString = [];
@@ -23,7 +23,7 @@ class Decrypter{
                     decryptedString.push("F");
                     break;
                 case "J":
-                    decryptedString.push("D");
+                    decryptedString.push("G");
                     break;
                 case "K":
                     decryptedString.push("H");
@@ -88,6 +88,6 @@ class Decrypter{
             }
         }
         decryptedString = decryptedString.join("");
-        console.log(decryptedString);
+        return decryptedString;
     }
 }

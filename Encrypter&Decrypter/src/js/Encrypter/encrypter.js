@@ -1,9 +1,9 @@
 class Encrypter{
-    encrypt(stringToEncrypt){
-        stringToEncrypt = stringToEncrypt.toUpperCase();
-        let encryptedString = []; 
-        for(let i = 0; i < stringToEncrypt.length; i++){
-            switch(stringToEncrypt[i]){
+    encrypt(stringToEncrypt){ // hier geef je de string die je wilt encrypten mee
+        stringToEncrypt = stringToEncrypt.toUpperCase(); // hier zet je hem om naar hoofdletters
+        let encryptedString = []; // hier maak je een lege array aan waar je de nieuwe string in gaat pushen
+        for(let i = 0; i < stringToEncrypt.length; i++){ // hier loop je door de string die geencrypt moet worden heen
+            switch(stringToEncrypt[i]){ // hier zet je alle letters om naar andere en die push je in de lege array
                 case "A":
                     encryptedString.push("D");
                     break;
@@ -22,7 +22,7 @@ class Encrypter{
                 case "F":
                     encryptedString.push("I");
                     break;
-                case "D":
+                case "G":
                     encryptedString.push("J");
                     break;
                 case "H":
@@ -82,12 +82,12 @@ class Encrypter{
                 case "Z":
                     encryptedString.push("C");
                     break;
-                default:
+                default: // hier zet je als hij er niet tussen staat dat hij zichzelf mag blijven
                     encryptedString.push(stringToEncrypt[i]);
                     break;
             }
         }
-        encryptedString = encryptedString.join("");
-        console.log(encryptedString);
+        encryptedString = encryptedString.join(""); // hier verzorg je ervoor dat het aan elkaar komt
+        return encryptedString; // hier return je de encrypted string
     }
 }

@@ -1,5 +1,18 @@
 body{
     font-size: 2rem;
     min-height: 100vh;
-    background: rgb(248, 114, 114);
+    font-family: sans-serif;
+    background: linear-gradient(120deg, rgb(248, 114, 114), rgb(248, 141, 114));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4rem;
+    gap: 2rem;
 }

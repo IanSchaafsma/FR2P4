@@ -1,4 +1,4 @@
-class Encrypter{
+class Encrypter{ 
     encrypt(stringToEncrypt){ // hier geef je de string die je wilt encrypten mee
         stringToEncrypt = stringToEncrypt.toUpperCase(); // hier zet je hem om naar hoofdletters
         let encryptedString = []; // hier maak je een lege array aan waar je de nieuwe string in gaat pushen
@@ -8,7 +8,7 @@ class Encrypter{
                     encryptedString.push("D");
                     break;
                 case "B":
-                    encryptedString.push("E");
+                    encryptedString.push("E");                      // https://youtu.be/jeg_TJvkSjg?t=18
                     break;
                 case "C":
                     encryptedString.push("F");

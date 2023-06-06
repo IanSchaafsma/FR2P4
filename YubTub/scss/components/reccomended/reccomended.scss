@@ -1,0 +1,10 @@
+.reccomended{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__video{
+        width: 100%;
+    }
+}

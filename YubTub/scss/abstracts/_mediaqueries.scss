@@ -1,0 +1,16 @@
+@media screen and (max-width: 62.5rem){
+    .main{
+        flex-direction: column;
+    }
+
+    .reccomended{
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &__video{
+            width: 48%;
+        }
+    }
+}

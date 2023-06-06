@@ -1,0 +1,68 @@
+.video{
+
+    &__footer{
+        width: 100%;
+        background: white;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.229);
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+
+        &LeftWrapper{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+    
+        &RightWrapper{
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+    }
+
+    &__video{
+        width: 100%;
+    }
+
+    &__title{
+        
+    }
+
+    &__avatar{
+        border: 0.2rem solid black ;
+        height: 6rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+
+    }
+
+    &__favorite{
+        background: none;
+        border: none;
+        font-size: 2rem;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &__next{
+        background: none;
+        border: none;
+        font-size: 4rem;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+

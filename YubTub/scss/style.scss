@@ -1,0 +1,14 @@
+@use "./abstracts/reset";
+@use "./base.scss";
+
+
+// video player
+@use "./components/video/video.scss";
+
+// comments
+@use "./components/comments/comments.scss";
+
+// reccomended
+@use "./components/reccomended/reccomended.scss";
+
+@use "./abstracts/mediaqueries";

@@ -1,6 +1,8 @@
 @media screen and (max-width: 62.5rem){
     .main{
         flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
 
     .reccomended{
@@ -11,6 +13,91 @@
 
         &__video{
             width: 48%;
+        }
+    }
+
+    .video{
+
+        &__footer{
+            transition: none;
+            opacity: 1;
+            height: 8rem;
+        }   
+    }
+}
+
+@media screen and (max-width: 50rem) {
+
+
+    .main{
+        padding: 2rem;
+    }
+
+    .leftWrapper{
+        width: 100%;
+    }
+
+    .reccomended{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex-wrap: wrap;
+
+        &__video{
+            width: 48%;
+        }
+    }
+
+    
+}
+
+@media screen and (max-width: 40rem){
+
+    .reccomended{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        &__video{
+            width: 45%;
+        }
+    }
+
+    .video{
+          
+    }
+
+    .video{
+    
+        &__footer{
+            height: 6.5rem;
+
+            &LeftWrapper{
+                gap: 1rem;
+            }
+        
+            &RightWrapper{
+                gap: 1.2rem;
+            }
+        }
+    
+        &__title{
+            font-size: 120%;
+        }
+    
+        &__avatar{
+            height: 4.3rem;
+            font-size: 2rem;
+    
+        }
+    
+        &__favorite{
+            font-size: 2rem;
+        }
+    
+        &__next{
+            font-size: 3rem;
         }
     }
 }

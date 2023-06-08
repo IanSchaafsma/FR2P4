@@ -1,28 +1,30 @@
 class App{
  switcher;
- data = [
- {
-    id: 0,
-    video: "jeroeninzijnlambo.mp4",
-    link: 1
-
- },
-{
-    id:1,
-    video: "video1.mp4",
-    link: 2
-},
-{
-    // id:2,
-    // video: "video--3.mp4",
-    // link: 0
-},
-
-]
+ api;
+ data;
 
  constructor(){
-    this.switcher = new Switcher(this, this.data);
+    this.api = new API();
+    this.api.getData("../data/data.json").then( (data) => {
+        this.data = data;
+        this.switcher = new Switcher(this, this.data);
+    });
  }
+}
+
+class API{ 
+    
+    async getData(url){
+        let dataToBeReturned = {};
+       await fetch(url).then(
+            (response) => {
+                return response.json();
+            }
+        ).then( (data) => {
+            dataToBeReturned = data.data;
+        });
+        return dataToBeReturned;
+    }
 }
 
 class Switcher{
@@ -30,17 +32,18 @@ class Switcher{
  cleaner;
  app;
  default = 0;
+ data;
 
- constructor(app,data){
-    this.app = app;
+ constructor(app, data){
     this.data = data;
+    this.app = app;
     this.yubtub = new Yubtub(this.app, data[this.default]);
     this.cleaner = new Cleaner();
  }
 
  switch(link){
     this.cleaner.clean("body");
-    this.yubtub = new Yubtub(this.app,  this.data[link]);
+    this.yubtub = new Yubtub(this.app, this.data[link]);
 
  }
 }
@@ -55,7 +58,8 @@ class Yubtub{
     aside;
     renderer;
     app;
-    constructor(app,data){
+
+    constructor(app, data){
         this.app = app;
         this.renderer = new Renderer();
         this.aside = new Aside(this, data);
@@ -77,7 +81,7 @@ class Aside{
         this.yubtub = yubtub;
         this.htmlElement = document.createElement("aside");
         this.yubtub.renderer.render("body",this.htmlElement);
-        this.nextVideo = new NextVideo(this,data);
+        this.nextVideo = new NextVideo(this, data);
 
     }
 }
@@ -85,7 +89,9 @@ class Aside{
 class NextVideo{
   aside;
   htmlElement;
-  constructor(aside,data){
+  data;
+  
+  constructor(aside, data){
     this.aside = aside;
     this.data = data;
     this.htmlElement = document.createElement("video");
@@ -101,4 +107,4 @@ class NextVideo{
 }
 
 const app = new App();
-console.log(app);
+// console.log(app);

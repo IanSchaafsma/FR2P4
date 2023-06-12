@@ -20,5 +20,20 @@
             "video": "video3.mp4",
             "link": 0
         }
+    ],
+
+    "comments": [
+        {
+            "message": "Bericht 1"
+        },
+        {
+            "message": "Bericht 2"
+        },
+        {
+            "message": "Bericht 3"
+        },
+        {
+            "message": "Bericht 4"
+        }
     ]
 }

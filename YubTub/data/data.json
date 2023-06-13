@@ -3,7 +3,21 @@
         {
             "id": 0,
             "video": "jeroeninzijnlambo.mp4",
-            "link": 1
+            "link": 1,
+            "comments": [
+                {
+                    "user": "dani",
+                    "comment": "hoi ik ben een comment"
+                },
+                {
+                    "user": "sam",
+                    "comment": "yo ik ben ook een comment"
+                },
+                {
+                    "user": "jeroen",
+                    "comment": "hoi ik ben toevallig ook een comment"
+                }
+            ]
         },
         {
             "id": 1,
@@ -19,21 +33,6 @@
             "id": 3,
             "video": "video3.mp4",
             "link": 0
-        }
-    ],
-
-    "comments": [
-        {
-            "message": "Bericht 1"
-        },
-        {
-            "message": "Bericht 2"
-        },
-        {
-            "message": "Bericht 3"
-        },
-        {
-            "message": "Bericht 4"
         }
     ]
 }

@@ -64,7 +64,7 @@ class Yubtub{
         this.app = app;
         this.renderer = new Renderer();
 
-        this.main = new Main(this);
+        this.main = new Main(this, data);
         this.aside = new Aside(this, data);
     }
 }
@@ -76,7 +76,7 @@ class Main{
     htmlElement;
     leftWrapperElement;
 
-    constructor(yubtub){
+    constructor(yubtub, data){
         this.yubtub = yubtub;
         this.video = new Video();
 
@@ -102,9 +102,7 @@ class Main{
         this.yubtub.renderer.render(".video__footerRightWrapper", this.video.videoNextElement);
         this.yubtub.renderer.render(".video__next", this.video.videoNextIconElement);
 
-        this.comments = new Comments(this);
-
-        
+        this.comments = new Comments(this, data);
     }
 }
 
@@ -173,9 +171,12 @@ class Comments{
     htmlElement;
     commentsListElement;
     commentInputElement
+    commentTypedText;
+    data
 
-    constructor(main){
+    constructor(main, data){
         this.main = main;
+        this.data = data;
 
         this.htmlElement = document.createElement("section");
         this.htmlElement.classList.add("comments");
@@ -186,19 +187,44 @@ class Comments{
         this.commentInputElement.classList.add("comments__input");
         this.commentInputElement.placeholder = "Jouw Comment!";
 
-
         // rendering the comments list
         this.main.yubtub.renderer.render(".leftWrapper", this.htmlElement);
         this.main.yubtub.renderer.render(".comments", this.commentsListElement);
 
-        this.comment = new Comment(this);
+        this.comment = new Comment(this, data);
 
 
         // rendering the comment input
         this.main.yubtub.renderer.render(".comments", this.commentInputElement);
 
+        
+        // function on enter 
+        this.commentInputElement.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                this.sentDataToComment(event);
+            }
+        });  
+    }
 
-       
+    sentDataToComment = (event) => {
+        // console.log(this.main.yubtub.app.switcher.cleaner.clean)
+        this.main.yubtub.app.switcher.cleaner.clean(".comments__comments");
+        event.target.value = event.target.value ? event.target.value.trimStart() : '' // makes sure there are no unnecesary spaces in the comment
+        if(event.target.value === ""){
+            console.log("empty input");
+        }
+        else{
+            this.comment.data.push(
+                {
+                    "user": "anonymous",
+                    "comment": event.target.value
+                }
+            );
+        }
+        
+        this.comment = new Comment(this, this.data);
+        this.commentInputElement.value = "";
+
     }
 }
 
@@ -208,29 +234,32 @@ class Comment{
     commentAvatarElement;
     commentAvatarIconElement;
     commentText;
+    data;
 
-    constructor(comments){
+    constructor(comments, data){
         this.comments = comments;
+        this.data = data.comments;
         
-        this.commentElement = document.createElement("li");
-        this.commentElement.classList.add("comments__comment");
-        this.commentAvatarElement = document.createElement("figure");
-        this.commentAvatarElement.classList.add("comments__avatar");
-        this.commentAvatarIconElement = document.createElement("i");
-        this.commentAvatarIconElement.classList = "fa-regular fa-user";
-        this.commentText = document.createElement("p");
-        this.commentText.classList.add("comments__text");
-        this.commentText.innerText = "tekst tekst tekst tekst tekst";
-        this.render();
+        for(let i = 0; i < this.data.length; i++){
+            this.commentElement = document.createElement("li");
+            this.comments.main.yubtub.renderer.render(".comments__comments", this.commentElement);
+            this.commentElement.classList = `comments__comment comments__comment${[i]}`;
+            this.commentAvatarElement = document.createElement("figure");
+            this.commentAvatarIconElement = document.createElement("i");
+            this.commentText = document.createElement("p");
+            this.commentText.innerText = this.data[i].comment;
 
+            this.commentAvatarElement.classList = `comments__avatar comments__avatar${[i]}`;
+            this.commentAvatarIconElement.classList = "fa-regular fa-user";
+            this.commentText.classList.add("comments__text");
+
+            this.comments.main.yubtub.renderer.render(`.comments__comment${[i]}`, this.commentAvatarElement);
+            this.comments.main.yubtub.renderer.render(`.comments__avatar${[i]}`, this.commentAvatarIconElement);
+            this.comments.main.yubtub.renderer.render(`.comments__comment${[i]}`, this.commentText);
+        }
+        
     }
 
-    render = () => {
-        this.comments.main.yubtub.renderer.render(".comments__comments", this.commentElement);
-        this.comments.main.yubtub.renderer.render(".comments__comment", this.commentAvatarElement);
-        this.comments.main.yubtub.renderer.render(".comments__avatar", this.commentAvatarIconElement);
-        this.comments.main.yubtub.renderer.render(".comments__comment", this.commentText);
-    }
 }
 
 class Renderer{
@@ -265,7 +294,7 @@ class NextVideo{
     this.aside = aside;
     this.data = data;
     this.htmlElement = document.createElement("video");
-    this.htmlElement.classList.add("video__video");
+    this.htmlElement.classList.add("reccomended__video");
     this.htmlElement.src = "./videos/" + data.video;
     this.aside.yubtub.renderer.render("aside", this.htmlElement);
     this.htmlElement.onclick = this.videoClicked;

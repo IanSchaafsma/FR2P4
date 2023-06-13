@@ -151,6 +151,7 @@ body {
   width: 40%;
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 2rem;
 }
 .reccomended__video {
@@ -168,6 +169,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    height: 40%;
   }
   .reccomended__video {
     width: 48%;

@@ -31,20 +31,19 @@ class Switcher{
  yubtub;
  cleaner;
  app;
- default = 0;
  data;
 
  constructor(app, data){
     this.data = data;
     this.app = app;
-    this.yubtub = new Yubtub(this.app, data[this.default]);
+    this.yubtub = new Yubtub(this.app, this.data[1], this.data[0]);
     this.cleaner = new Cleaner();
+
  }
 
- switch(link){
+ switch(link, id){
     this.cleaner.clean("body");
-    this.yubtub = new Yubtub(this.app, this.data[link]);
-
+    this.yubtub = new Yubtub(this.app, this.data[link], this.data[id]);
  }
 }
 
@@ -56,16 +55,27 @@ class Cleaner{
 
 class Yubtub{
     main;
+    header;
     aside;
     renderer;
     app;
 
-    constructor(app, data){
+    constructor(app, data, id){
         this.app = app;
         this.renderer = new Renderer();
 
-        this.main = new Main(this, data);
+        this.header = new Header();
+        // rendering the header
+        this.renderer.render("body", this.header.htmlElement);
+        this.renderer.render(".header", this.header.headerWrapperElement);
+        this.renderer.render(".header__wrapper", this.header.brandNameElement);
+        this.renderer.render(".header__wrapper", this.header.sloganElement);
+        this.renderer.render(".header", this.header.creditsElement);
+        
+        this.main = new Main(this, data, id);
         this.aside = new Aside(this, data);
+
+        
     }
 }
 
@@ -76,9 +86,9 @@ class Main{
     htmlElement;
     leftWrapperElement;
 
-    constructor(yubtub, data){
+    constructor(yubtub, data, id){
         this.yubtub = yubtub;
-        this.video = new Video();
+        this.video = new Video(data, id);
 
         this.htmlElement = document.createElement("main");
         this.htmlElement.classList.add("main");
@@ -106,6 +116,37 @@ class Main{
     }
 }
 
+class Header{
+    htmlElement;
+    headerWrapperElement;
+    brandNameElement;
+    sloganElement;
+    creditsElement;
+    
+    constructor(){
+        this.htmlElement = document.createElement("header");
+        this.htmlElement.classList.add("header");
+
+        this.headerWrapperElement = document.createElement("div");
+        this.headerWrapperElement.classList.add("header__wrapper");
+
+        this.brandNameElement = document.createElement("h1");
+        this.brandNameElement.classList.add("header__brandName");
+        this.brandNameElement.innerText = "Yubtub";
+
+        this.sloganElement = document.createElement("p");
+        this.sloganElement.classList.add("header__slogan");
+        this.sloganElement.innerText = "For all your entertainment purposes";
+
+        this.creditsElement = document.createElement("a");
+        this.creditsElement.classList.add("header__credits");
+        this.creditsElement.href = "http://www.ianschaafsma.nl";
+        this.creditsElement.innerText = "Made by - Ian Schaafsma";
+
+    }
+
+}
+
 class Video{
     htmlElement;
     videoWrapperElement;
@@ -124,8 +165,7 @@ class Video{
     videoNextElement;
     videoNextIconElement;
 
-
-    constructor(){
+    constructor(data, id){
         this.htmlElement = document.createElement("section");
         this.htmlElement.classList.add("video");
 
@@ -134,7 +174,8 @@ class Video{
 
         this.videoElement = document.createElement("video");
         this.videoElement.classList.add("video__video");
-        this.videoElement.src = "videos/jeroeninzijnlambo.mp4";
+        this.videoElement.src = "./videos/" + id.video;
+        this.videoElement.controls = true;
 
         this.videoFooterElement = document.createElement("footer");
         this.videoFooterElement.classList.add("video__footer");
@@ -148,7 +189,7 @@ class Video{
         this.videoAvatarElement.classList = "fa-regular fa-user";
         this.videoTitleElement = document.createElement("h2");
         this.videoTitleElement.classList.add("video__title");
-        this.videoTitleElement.innerText = "Title";
+        this.videoTitleElement.innerText = id.title;
 
         this.videoFooterRightElement = document.createElement("div");
         this.videoFooterRightElement.classList.add("video__footerRightWrapper");
@@ -273,7 +314,7 @@ class Aside{
     nextVideo;
     htmlElement;
 
-    constructor(yubtub,data){
+    constructor(yubtub, data){
         this.yubtub = yubtub;
         this.htmlElement = document.createElement("aside");
         this.htmlElement.classList.add("reccomended");
@@ -301,7 +342,7 @@ class NextVideo{
   }
 
   videoClicked = () => {
-    this.aside.yubtub.app.switcher.switch(this.data.link);
+    this.aside.yubtub.app.switcher.switch(this.data.link, this.data.id);
   }
 
 }

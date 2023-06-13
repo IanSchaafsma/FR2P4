@@ -4,35 +4,77 @@
             "id": 0,
             "video": "jeroeninzijnlambo.mp4",
             "link": 1,
+            "title": "Jeroen gespot in zijn aventador",
             "comments": [
                 {
                     "user": "dani",
-                    "comment": "hoi ik ben een comment"
+                    "comment": "z'n dikke bak wil ik ook wel"
                 },
                 {
                     "user": "sam",
-                    "comment": "yo ik ben ook een comment"
-                },
-                {
-                    "user": "jeroen",
-                    "comment": "hoi ik ben toevallig ook een comment"
+                    "comment": "op 4:32 gebeurt er iets vets"
                 }
             ]
         },
         {
             "id": 1,
             "video": "video1.mp4",
-            "link": 2
+            "link": 2,
+            "title": "Hoe maak je de perfecte koffie",
+            "comments": [
+                {
+                    "user": "grote smurf",
+                    "comment": "is dat Jeroen Rijsdijk?!?!?!?!"
+                },
+                {
+                    "user": "sam",
+                    "comment": "first"
+                },
+                {
+                    "user": "ian",
+                    "comment": "HEY DAT IS MIJN DOCENT GEWEEST!!!"
+                },
+                {
+                    "user": "jeroen",
+                    "comment": "POH wat een mooie auto is dat"
+                }
+            ]
         },
         {
             "id": 2,
             "video": "video2.mp4",
-            "link": 3
+            "link": 3,
+            "title": "Koffie bonen (ASMR)",
+            "comments": [
+                {
+                    "user": "eekhoorn",
+                    "comment": "ik had nootjes verwacht"
+                },
+                {
+                    "user": "sam",
+                    "comment": "zo dat ziet er lekker uit!"
+                },
+                {
+                    "user": "jeroen",
+                    "comment": "dat ga ik ook proberen"
+                }
+            ]
         },
         {
             "id": 3,
             "video": "video3.mp4",
-            "link": 0
+            "link": 0,
+            "title": "Nieuwe nissan gekocht met 700hp",
+            "comments": [
+                {
+                    "user": "sam",
+                    "comment": "wat een lekker geluid"
+                },
+                {
+                    "user": "jeroen",
+                    "comment": "ik snap niet hoe mensen dit leuk vinden erg stom"
+                }
+            ]
         }
     ]
 }

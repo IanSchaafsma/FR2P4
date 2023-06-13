@@ -1,6 +1,8 @@
 @use "./abstracts/reset";
 @use "./base.scss";
 
+// header
+@use "./components/header/header.scss";
 
 // video player
 @use "./components/video/video.scss";
